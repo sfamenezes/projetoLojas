@@ -10,7 +10,7 @@ describe("Petstore Swagger - Pet", () =>{
 
     // Função Post == Create == Incluir
     it("POST Pet", () =>{
-        // Onde está o json com os dados do Pet
+        // Onde esta  o json com os dados do Pet
         // Configura
         const jsonFile = require("../../vendors/pet1.json");
         
