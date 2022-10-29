@@ -1,12 +1,15 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
+const chromedriver = require("chromedriver")
 
 describe('Comprar Passagem', function() {
-  this.timeout(30000)
+  
+  
   let driver
   let vars
   beforeEach(async function() {
     driver = await new Builder().forBrowser('chrome').build()
+    await driver.manage().setTimeouts({implicit: 60000}); // espera do Selenium
     vars = {}
   })
   afterEach(async function() {
@@ -41,4 +44,17 @@ describe('Comprar Passagem', function() {
     //await driver.findElement(By.css("tr:nth-child(3) > td:nth-child(2)")).click()
     assert(await driver.findElement(By.css("tr:nth-child(3) > td:nth-child(2)")).getText() == "555 USD")
   })
+  it('Login', async function() {
+    await driver.get("https://blazedemo.com/")
+    await driver.manage().window().setRect({ width: 1296, height: 696 })
+    await driver.findElement(By.linkText("home")).click()
+    await driver.findElement(By.id("email")).click()
+    await driver.findElement(By.id("email")).sendKeys("correia@iterasys.com.br")
+    await driver.findElement(By.id("password")).click()
+    await driver.findElement(By.id("password")).sendKeys("laranja")
+    await driver.findElement(By.name("remember")).click()
+    await driver.findElement(By.css(".btn-primary")).click()
+    assert(await driver.findElement(By.css(".message")).getText() == "Page Expired")
+  })
+
 })
