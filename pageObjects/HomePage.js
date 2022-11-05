@@ -21,7 +21,6 @@ class HomePage extends BasePage{   //vai usar a basepage
     // clica na promocao da semana
     async consultarDestinoDaSemana() {
         await this.driver.findElement(this.linkDaSemana).click();
-
     }
 
     //seleciona a origem e o destino de um Voo

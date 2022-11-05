@@ -21,7 +21,7 @@ require("chromedriver");
 });
 (0, cucumber_1.Given)('que acesso o site BlazeDemo', async function () {
     await this.driver.get("https://www.blazedemo.com");
-    this.homepage = new HomePage_1.default(this.driver); //instancia a Home Page
+    this.homePage = new HomePage_1.default(this.driver); //instancia a Home Page
 });
 (0, cucumber_1.When)('seleciono origem como {string} e destino como {string}', async function (origem, destino) {
     await this.homePage.selecionarOrigemDestinoVoo(origem, destino);

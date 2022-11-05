@@ -9,9 +9,9 @@ Before(async function () {
     this.driver = await new Builder()
         .forBrowser('chrome')
         .build()
-    this.driver.manage().setTimeouts({implicit: 30000 })
-    this.driver.manage().window().maximize()
-})
+        this.driver.manage().setTimeouts({ implicit: 30000 })
+        this.driver.manage().window().maximize()
+});
 
 After(async function () {
     this.driver.quit()
@@ -19,10 +19,10 @@ After(async function () {
     
 Given('que acesso o site BlazeDemo', async function () {
     await this.driver.get("https://www.blazedemo.com")
-    this.homepage = new HomePage(this.driver)   //instancia a Home Page
+    this.homePage = new HomePage(this.driver)   //instancia a Home Page
 });
 
-When('seleciono origem como {string} e destino como {string}', async function (origem, destino) {
+When('seleciono origem como {string} e destino como {string}', async function (origem, destino) {    
     await this.homePage.selecionarOrigemDestinoVoo(origem, destino)    
 });
 
